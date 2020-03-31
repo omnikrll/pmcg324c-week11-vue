@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Note Taker App 2</title>
+	<link rel="stylesheet" href="style.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="app.js" defer></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Note Taker 3000</h1>
+		<form class="inputForm" v-on:submit.prevent>
+			<input v-model="title"/>
+			<textarea v-model="body"></textarea>
+			<button v-on:click="addNote">number goes up</button>
+		</form>
+
+		<h2>{{ nextNoteId }}</h2>
+
+		<note-display
+			v-for="(note, index) in notes"
+			v-bind:key="note.id"
+			v-bind:title="note.title"
+			v-bind:body="note.body"
+			v-on:remove="deleteNote(index)"
+		></note-display>
+	</div>
+</body>
+</html>
